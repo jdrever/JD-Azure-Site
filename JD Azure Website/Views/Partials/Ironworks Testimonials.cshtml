@@ -1,0 +1,15 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+	
+@{
+var testimonials=Model.Content.Children.Where("Visible");
+if (testimonials.Count()>0)
+{ 
+  foreach (var testimonial in testimonials) 
+  {                            
+     <div class="info-box"> 
+      @testimonial.GetPropertyValue("testimonialContentRTE")
+      <p><i>@testimonial.Name</i></p>                                       
+     </div>                                                         
+  }
+}
+}	

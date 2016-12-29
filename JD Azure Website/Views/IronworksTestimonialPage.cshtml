@@ -1,0 +1,15 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "IronworksBasePage.cshtml";
+}
+
+@section MainBody
+{
+  <section id="content-wrap">
+    <section id="content">
+        <a href="#maincontent" accesskey="s" title="Skip Navigation" class="hidden">Skip Navigation</a>
+        <h1 class="heading">Testimonials</h1> 
+		@Html.Partial("Ironworks Testimonials")			
+    </section>
+  </section>
+}

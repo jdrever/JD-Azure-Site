@@ -1,0 +1,20 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<dynamic>
+@using SendGridMailService
+	
+@{
+
+if (!String.IsNullOrEmpty(Request.Form["Email"])) 
+{  
+    string strTo = "info@ironworkstoves.co.uk";
+	string strCC="james@jamesdrever.co.uk";	
+	string strFrom = Request.Form["Email"];
+	string strName="Steve at Ironworks";
+    string strSubject = "Enquiry from website";
+    string strMessage= Request.Form["Message"];
+    
+	SendGridMailService mailService=new SendGridMailService();	
+	mailService.Send(strFrom, strTo,strCC,strName,strMessage, strSubject);	
+	
+    <p style="border:1px solid black;background:gray;padding:5px;color:#ffffff;"><b>Thankyou very much for your enquiry.  We will be in touch with you shortly.</b></p>	
+}
+}

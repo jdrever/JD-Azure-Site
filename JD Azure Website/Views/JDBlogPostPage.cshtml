@@ -1,0 +1,20 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "JDBasePage.cshtml";
+}
+@section MainBody
+{
+<div class="page-header">
+
+@{
+var publishedDate=CurrentPage.CreateDate;
+if (CurrentPage.HasProperty("publishedDate")&&CurrentPage.GetValue("writtenDate") != null)
+{
+	publishedDate=CurrentPage.GetPropertyValue("publishedDate");
+}
+	<p><b>@publishedDate.ToString("D")</b></p>	
+}
+	<h1>@Umbraco.Field("pageName")</h1>
+	@Umbraco.Field("content")
+</div>
+}

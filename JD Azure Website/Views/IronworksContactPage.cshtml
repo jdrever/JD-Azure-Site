@@ -1,0 +1,73 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "IronworksBasePage.cshtml";
+}
+@section MainBody
+{
+@Html.Partial("Ironworks Send Email")		
+<script type="text/javascript">
+function validateForm()
+{
+var msg=""  
+var email=document.forms["ContactForm"]["Email"].value;
+var message=document.forms["ContactForm"]["Message"].value;
+if (email==null || email=="")
+{
+msg+="You must enter your email address\n";
+document.forms["ContactForm"]["Email"].focus();  
+
+}
+if (message==null || message=="")
+{
+msg+="You must enter your message\n";
+document.forms["ContactForm"]["Message"].focus();  
+}
+if (msg!="")
+{
+  alert(msg);
+  return false; 
+}
+return true;  
+}  
+</script>  
+
+  <section id="featured">
+     <p>
+		<br /><br /><br /><br /><br />
+	    <img src="/media/1004/apics.jpg" alt="APICS logo" width="112" height="113" /> <img src="/media/1052/guild-of-mastercraftsmen.jpg" alt="Guild of Master Craftsmen banner" title="Guild of Master Craftsmen" border="0" />
+  	</p>
+  
+</section>
+<!-- end featured -->
+<section id="content-wrap">
+    <section id="content">
+        <a href="#maincontent" accesskey="s" title="Skip Navigation" class="hidden">Skip Navigation</a>
+        <section class="one-col">
+            <div class="box">
+                <h1 class="heading">
+                    Contacting IronWorks</h1>
+                <p>
+                    For any information regarding the services we provide please feel free to contact us and we will be happy to help</p>
+            </div>
+            <div class="clear">
+            </div>
+        </section>
+        <section class="two-col">
+            <h1 class="heading">
+                Contact Us</h1>
+          <p>
+          <form method="post" id="ContactForm" action="/contact-us/" onsubmit="return validateForm();">
+            <fieldset>
+              <legend>Please enter your details</legend>
+              <label for="Email">Email</label>
+              <input type="text" name="Email" id="Email" width="40"/><br />
+              <label for="Message">Your Message</label>
+              <textarea name="Message" id="Message" rows="3" width="40"></textarea>            
+          </fieldset>
+             <input type="submit" value="SEND" name="Send" id="Send" />
+        </form>
+          </p>
+      </section>
+    </section>
+  </section>	
+}

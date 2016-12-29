@@ -1,0 +1,36 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using System.Text.RegularExpressions
+@{
+
+var homePage=CurrentPage.AncestorsOrSelf("JDHomePage");
+if (homePage.Count() > 0)
+{
+	var blogHomePage=homePage.First().Children("JDBlogMainPage");
+	if (blogHomePage.Count()>0)
+	{
+		var listOfBlogPosts = blogHomePage.First().Children("JDBlogPost").Where("Visible"); 
+
+
+		if (listOfBlogPosts.Any())
+		{
+			<article>
+				@foreach (var blogPost in listOfBlogPosts)
+				{
+					var publishedDate=blogPost.CreateDate;
+					if (blogPost.HasProperty("publishedDate")&&blogPost.GetValue("writtenDate") != null)
+					{
+						publishedDate=blogPost.GetPropertyValue("publishedDate");
+					}
+					<p><b>@publishedDate.ToString("D")</b></p>	
+					<h2>@blogPost.Name</h2>
+					var blogPostContent=blogPost.Content.ToString();
+					var blogPostContentWithoutHTMTL = Regex.Replace(blogPostContent, @"<[^>]+>|&nbsp;", "").Trim();
+					int firstParagraphBreakInContent = blogPostContentWithoutHTMTL.IndexOf('\n');
+					string firstLineOfContent = firstParagraphBreakInContent == -1 ? blogPostContentWithoutHTMTL : blogPostContentWithoutHTMTL.Substring(0, firstParagraphBreakInContent+1);	
+					<p>@firstLineOfContent</p>
+					<p><a href="@blogPost.Url">Read more</a></p>	
+				}
+			</article>
+		}
+	}	
+}}	
