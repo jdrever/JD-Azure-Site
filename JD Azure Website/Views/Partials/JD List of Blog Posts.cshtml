@@ -1,5 +1,6 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @using System.Text.RegularExpressions
+
 @{
 
 var homePage=CurrentPage.AncestorsOrSelf("JDHomePage");
@@ -15,12 +16,17 @@ if (homePage.Count() > 0)
 		{
 			<article>
 				@foreach (var blogPost in listOfBlogPosts)
-				{
-					var publishedDate=blogPost.CreateDate;
-					if (blogPost.HasProperty("publishedDate")&&blogPost.GetValue("writtenDate") != null)
-					{
-						publishedDate=blogPost.GetPropertyValue("publishedDate");
-					}
+                {
+                    var publishedDate=blogPost.CreateDate;
+
+                    if (blogPost.HasProperty("publishedDate")&&blogPost.GetValue("publishedDate") != null)
+                    {
+                        var overridePublishedDate= (DateTime)blogPost.GetPropertyValue("publishedDate");
+                        if (overridePublishedDate.Year > 2000)
+                        {
+                            publishedDate = overridePublishedDate;
+                        }
+                    }
 					<p><b>@publishedDate.ToString("D")</b></p>	
 					<h2>@blogPost.Name</h2>
 					var blogPostContent=blogPost.Content.ToString();
