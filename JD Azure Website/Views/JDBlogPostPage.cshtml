@@ -7,11 +7,19 @@
 <div class="page-header">
 
 @{
-var publishedDate=CurrentPage.CreateDate;
-if (CurrentPage.HasProperty("publishedDate")&&CurrentPage.GetValue("writtenDate") != null)
-{
-	publishedDate=CurrentPage.GetPropertyValue("publishedDate");
-}
+
+
+
+
+    var publishedDate=CurrentPage.CreateDate;
+    if (CurrentPage.HasProperty("publishedDate")&&CurrentPage.GetValue("writtenDate") != null)
+    {
+        var overridePublishedDate = (DateTime)CurrentPage.GetPropertyValue("publishedDate");
+        if (overridePublishedDate.Year > 2000)
+        {
+            publishedDate = overridePublishedDate;
+        }
+    }
 	<p><b>@publishedDate.ToString("D")</b></p>	
 }
 	<h1>@Umbraco.Field("pageName")</h1>
