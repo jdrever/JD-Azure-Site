@@ -8,7 +8,7 @@ using  Umbraco.Web;
 using  Umbraco.ModelsBuilder;
 using  Umbraco.ModelsBuilder.Umbraco;
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "b2860ff458a0e20f")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "fe9a271445a4fe74")]
 [assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
 
 
@@ -424,6 +424,41 @@ namespace Umbraco.Web.PublishedContentModels
 		public DateTime PublishedDate
 		{
 			get { return this.GetPropertyValue<DateTime>("publishedDate"); }
+		}
+	}
+
+	/// <summary>JD Blog Post Comment</summary>
+	[PublishedContentModel("jDBlogPostComment")]
+	public partial class JDblogPostComment : PublishedContentModel
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "jDBlogPostComment";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public JDblogPostComment(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<JDblogPostComment, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Comment
+		///</summary>
+		[ImplementPropertyType("comment")]
+		public string Comment
+		{
+			get { return this.GetPropertyValue<string>("comment"); }
 		}
 	}
 
