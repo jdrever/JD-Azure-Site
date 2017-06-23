@@ -2,24 +2,37 @@
 
 @{
 
-var homePage=CurrentPage.AncestorsOrSelf("JDHomePage");
-if (homePage.Count() > 0)
-{
-	var writingMainPage=homePage.First().Children("JDWritingMainPage");
-	if (writingMainPage.Count()>0)
-	{
-		var listOfBooks = writingMainPage.First().Children("JDBook").Where("Visible"); 
+    var homePage=CurrentPage.AncestorsOrSelf("JDHomePage");
+    if (homePage.Count() > 0)
+    {
+        var writingMainPage=homePage.First().Children("JDWritingMainPage");
+        if (writingMainPage.Count()>0)
+        {
+            var listOfBooks = writingMainPage.First().Children("JDBook").Where("Visible");
 
 
-		if (listOfBooks.Any())
-		{
-			<article>
-				@foreach (var book in listOfBooks)
+            if (listOfBooks.Any())
+            {
+                foreach (var book in listOfBooks)
                 {
-					<h2>@book.Name</h2>
-					<p><a href="@book.Url">Read more</a></p>	
-				}
-			</article>
-		}
-	}	
-}}	
+                <h2>@book.Name</h2>
+                <p>@book.GetPropertyValue("description")</p>
+                    var listOfChapters = book.Children("JDBookChapter").Where("Visible");
+                    if (listOfChapters.Any())
+                    {
+                        foreach (var chapter in listOfChapters)
+                        {
+                            string url = chapter.Url;
+                            if (chapter.HasValue("document"))
+                            {
+                                url = chapter.GetPropertyValue("document");
+                            }
+                            <p><a href="@url">@chapter.Name</a></p>
+
+                        }
+                    }
+
+                }
+            }
+        }
+    }}	
