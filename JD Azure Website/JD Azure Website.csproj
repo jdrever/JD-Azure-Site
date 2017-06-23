@@ -405,6 +405,9 @@
     <Content Include="Config\BaseRestExtensions.config" />
     <Content Include="Config\applications.config" />
     <Content Include="Config\404handlers.config" />
+    <Content Include="Views\Partials\JD List of Books.cshtml" />
+    <Content Include="Views\JDBookChapter.cshtml" />
+    <Content Include="Views\JDWritingMainPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
