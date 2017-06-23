@@ -1,0 +1,12 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	Layout = "JDBasePage.cshtml";
+}
+@section MainBody
+{
+
+@Html.Partial("JD List of Books")		
+@Umbraco.Field("bodyText")
+	
+}
