@@ -27,14 +27,13 @@
                         }
                     }
                     var blogPostContent = blogPost.Content.ToString();
-                    var blogPostContentWithoutHTMTL = Regex.Replace(blogPostContent, @"<[^>
-                            ]+>|&nbsp;", "").Trim();
+                    var blogPostContentWithoutHTMTL = Regex.Replace(blogPostContent, @"<[^>]+>|&nbsp;", "").Trim();
                     int firstParagraphBreakInContent = blogPostContentWithoutHTMTL.IndexOf('\n');
                     string firstLineOfContent = firstParagraphBreakInContent == -1 ? blogPostContentWithoutHTMTL : blogPostContentWithoutHTMTL.Substring(0, firstParagraphBreakInContent + 1);
                     <article>
                         <p><b>@publishedDate.ToString("D")</b></p>
                         <h2>@blogPost.Name</h2>
-                        <p>@firstLineOfContent</p>
+                        <p>@Html.Raw(firstLineOfContent)</p>
                         <p><a href="@blogPost.Url">Read more</a></p>    
                     </article>
                 }
