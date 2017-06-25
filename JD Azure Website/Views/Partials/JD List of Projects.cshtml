@@ -1,0 +1,27 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    var homePage = CurrentPage.AncestorsOrSelf("JDHomePage");
+    if (homePage.Count() > 0)
+    {
+        var projectsMainPage = homePage.First().Children("JDProjectsMainPage");
+        if (projectsMainPage.Count() > 0)
+        {
+            var listOfProjects = projectsMainPage.First().Children("JDProject").Where("Visible");
+
+            if (listOfProjects.Any())
+            {
+                foreach (var project in listOfProjects)
+                {
+                        var projectLink = project.GetPropertyValue("link");
+                        <h2>@project.Name</h2>
+                        <p>@project.GetPropertyValue("description")</p>
+                        <p><a href="@projectLink">@projectLink</a></p>
+                }
+
+            }
+
+        }
+
+    }
+}
+
