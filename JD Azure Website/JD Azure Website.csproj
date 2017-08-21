@@ -391,6 +391,8 @@
     <Content Include="Config\BaseRestExtensions.config" />
     <Content Include="Config\applications.config" />
     <Content Include="Config\404handlers.config" />
+    <Content Include="App_Data\Models\all.dll.path" />
+    <Content Include="App_Data\Models\models.hash" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -409,6 +411,27 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Data\Models\File.generated.cs" />
+    <Compile Include="App_Data\Models\Folder.generated.cs" />
+    <Compile Include="App_Data\Models\Image.generated.cs" />
+    <Compile Include="App_Data\Models\IronworksBasePage.generated.cs" />
+    <Compile Include="App_Data\Models\IronworksContactPage.generated.cs" />
+    <Compile Include="App_Data\Models\IronworksHomePage.generated.cs" />
+    <Compile Include="App_Data\Models\IronworksTestimonial.generated.cs" />
+    <Compile Include="App_Data\Models\IronworksTestimonialPage.generated.cs" />
+    <Compile Include="App_Data\Models\IronworksWebPage.generated.cs" />
+    <Compile Include="App_Data\Models\JdbasePage.generated.cs" />
+    <Compile Include="App_Data\Models\JdblogMainPage.generated.cs" />
+    <Compile Include="App_Data\Models\JdblogPost.generated.cs" />
+    <Compile Include="App_Data\Models\JDblogPostComment.generated.cs" />
+    <Compile Include="App_Data\Models\JDbook.generated.cs" />
+    <Compile Include="App_Data\Models\JDbookChapter.generated.cs" />
+    <Compile Include="App_Data\Models\JdhomePage.generated.cs" />
+    <Compile Include="App_Data\Models\Jdproject.generated.cs" />
+    <Compile Include="App_Data\Models\JDprojectsMainPage.generated.cs" />
+    <Compile Include="App_Data\Models\JdwebPage.generated.cs" />
+    <Compile Include="App_Data\Models\JDwritingMainPage.generated.cs" />
+    <Compile Include="App_Data\Models\Member.generated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
