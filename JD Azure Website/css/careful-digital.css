@@ -1,13 +1,24 @@
-body 
-{
-	font-family: "Source Sans Pro","Helvetica Neue",Arial,Helvetica,serif;
-	font-size: 1.25em;
-	line-height: 1.5em;
+body {
+    font-family: "Source Sans Pro","Helvetica Neue",Arial,Helvetica,serif;
+    font-size: 1.25em;
+    line-height: 1.5em;
 }
+
+header p.companyname
+{
+    color:darkred;
+    font-weight:bold;
+    font-size:1.3em;
+    margin-top:0em;
+    margin-bottom:0em;
+}
+
 nav {
-	border-bottom: thick solid #808080;
-	margin: 0;
-	overflow: hidden;
+    border-bottom: thick solid #808080;
+    font-size:0.75em;
+    margin: 0;
+    overflow: hidden;
+    text-align: right;
 }
 nav ul{
 	margin: 0;
@@ -35,8 +46,22 @@ main
 }
 p 
 {
-	margin-bottom: 15px;
+    margin-bottom: 15px;
 }
+p.mission 
+{
+    color: darkred;
+    font-size: 3em;
+    line-height: 1.1em;
+}
+
+a{
+    color:black;
+}
+a.visited{
+    color:black;
+}
+
 h1
 {
 	line-height:1.1em;
@@ -44,18 +69,19 @@ h1
 
 .grid {
     display: flex;
-    justify-content: center
+    justify-content: center;
 
 }
 .grid-cell {
-    background-color: lightgray;
     flex: 1;
     padding: 10px;
-    border-radius: 5px;
+    border:1px solid lightgray;
+    border-radius: 10px;
     margin: 10px;
+    text-align:center;
 }
 
-@media all and (max-width: 500px) {
+@media all and (max-width: 600px) {
     .grid {
         /* On small screens, we are no longer using row direction but column */
         flex-direction: column;
