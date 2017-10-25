@@ -284,7 +284,7 @@ __pycache__/
 **/App_Data/Models/
 **/App_Data/NuGetBackup/
 # added JD 01/01/2017
-**/App_Data/Models/
+# **/App_Data/Models/
 **/web.config
 
 # Ignore Umbraco content cache file
