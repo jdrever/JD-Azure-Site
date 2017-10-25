@@ -42,18 +42,22 @@ h1
 	line-height:1.1em;
 }
 
-.wrapper {
-  display: grid;
-  grid-template-columns: 250px 250px 250px;
-  grid-gap: 10px;
-  background-color: #fff;
-  color: #444;
+.grid {
+    display: flex;
+    justify-content: center
+
+}
+.grid-cell {
+    background-color: lightgray;
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
 }
 
-.box {
-  background-color: #444;
-  color: #fff;
-  border-radius: 5px;
-  padding: 20px;
-  font-size: 150%;
+@media all and (max-width: 500px) {
+    .grid {
+        /* On small screens, we are no longer using row direction but column */
+        flex-direction: column;
+    }
 }
