@@ -1,5 +1,10 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.CarefulDigitalHomePage>
 @using ContentModels = Umbraco.Web.PublishedContentModels;
 @{
-	Layout = null;
+	Layout = "CarefulDigitalBasePage.cshtml";
+}
+
+@section MainBody
+{
+@Umbraco.Field("bodyText")
 }
