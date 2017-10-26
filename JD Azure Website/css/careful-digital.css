@@ -50,6 +50,7 @@ p
 }
 p.mission 
 {
+    text-align:center;        
     color: darkred;
     font-size: 3em;
     line-height: 1.1em;
@@ -86,4 +87,13 @@ h1
         /* On small screens, we are no longer using row direction but column */
         flex-direction: column;
     }
+    nav
+    {
+        text-align:left;
+    }
+    nav > ul > li > a {
+        line-height:0.8em;
+        padding: 0.2em 0.2em;
+    }
+
 }
