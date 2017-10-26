@@ -412,6 +412,7 @@
   <ItemGroup>
     <Compile Include="App_Data\Models\CarefulDigitalContent.generated.cs" />
     <Compile Include="App_Data\Models\CarefulDigitalHomePage.generated.cs" />
+    <Compile Include="App_Data\Models\CarefulDigitalTestimonialsPage.generated.cs" />
     <Compile Include="App_Data\Models\File.generated.cs" />
     <Compile Include="App_Data\Models\Folder.generated.cs" />
     <Compile Include="App_Data\Models\Image.generated.cs" />
