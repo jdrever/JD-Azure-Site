@@ -392,6 +392,7 @@
     <Content Include="Config\404handlers.config" />
     <Content Include="Views\CarefulDigitalBasePage.cshtml" />
     <Content Include="Views\CarefulDigitalHomePage.cshtml" />
+    <Content Include="Views\CarefulDigitalTestimonialsPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
