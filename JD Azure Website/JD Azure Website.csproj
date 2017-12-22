@@ -26,6 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -393,6 +394,10 @@
     <Content Include="Views\CarefulDigitalBasePage.cshtml" />
     <Content Include="Views\CarefulDigitalHomePage.cshtml" />
     <Content Include="Views\CarefulDigitalTestimonialsPage.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Partials\Grid\JDListofBlogComments.cshtml" />
+    <Content Include="Views\Partials\JDListOfBlogComments.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -435,6 +440,8 @@
     <Compile Include="App_Data\Models\JdwebPage.generated.cs" />
     <Compile Include="App_Data\Models\JDwritingMainPage.generated.cs" />
     <Compile Include="App_Data\Models\Member.generated.cs" />
+    <Compile Include="Controllers\BlogSurfaceController.cs" />
+    <Compile Include="Models\BlogPostCommentViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

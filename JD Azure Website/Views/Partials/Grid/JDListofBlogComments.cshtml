@@ -1,0 +1,11 @@
+﻿@model JD_Azure_Website.Models.BlogPostCommentViewModel
+
+using (Html.BeginUmbracoForm<LoginPageSurfaceController>
+    ("FormSubmission"))
+    {
+    <input type="submit" value="Submit" class=" button_medium" id="submit-contact" />
+
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+
+    }

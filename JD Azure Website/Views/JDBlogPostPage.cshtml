@@ -24,5 +24,14 @@
 }
 	<h1>@Umbraco.Field("pageName")</h1>
 	@Umbraco.Field("content")
+
+
+    @Html.Action("DisplayListOfComments","BlogSurface")
+
+    @foreach (var comment in Model.Content.Children("blogComment"))
+    {
+        <p>@comment.GetPropertyValue("comment")</p>
+    }
+
 </div>
 }
