@@ -8,12 +8,12 @@
     @Html.ValidationSummary(true)
     @Html.AntiForgeryToken()
 
-    @Html.TextBoxFor(model => model.Comment, new { placeholder = "Your Comment" })
-    @Html.ValidationMessageFor(model => model.Comment)
-
+    @Html.TextAreaFor(model => model.CommentText, new { placeholder = "Your Comment" })
+    @Html.ValidationMessageFor(model => model.CommentText)
+    <br />
     @Html.TextBoxFor(model => model.Name, new { placeholder = "Your Name" })
     @Html.ValidationMessageFor(model => model.Name)
-
+    <br />
     @Html.TextBoxFor(model => model.EmailAddress, new { placeholder = "Email Address" })
     @Html.ValidationMessageFor(model => model.EmailAddress)
 

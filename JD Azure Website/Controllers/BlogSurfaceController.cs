@@ -11,11 +11,13 @@ namespace JD_Azure_Website.Controllers
 {
     public class BlogSurfaceController : SurfaceController
     {
-        public ActionResult DisplayListOfComments()
+        public ActionResult DisplayCommentForm()
         {
-            return PartialView("JDListOfBlogComments", new BlogPostCommentViewModel());
+            return PartialView("JDBlogCommentForm", new BlogPostCommentViewModel());
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult PostComment(BlogPostCommentViewModel comment)
         {
             if (!ModelState.IsValid)
@@ -25,13 +27,13 @@ namespace JD_Azure_Website.Controllers
             }
 ;
             var commentNode = Services.ContentService.CreateContent(
-            "Comment made: "+DateTime.Now.ToLongDateString(), // Node Name - what I want to call the new child node
+            "Comment made: "+DateTime.Now.ToShortDateString()+" "+DateTime.Now.ToShortTimeString(), // Node Name - what I want to call the new child node
             CurrentPage.Id, // Parent Node we want to add to
             "JDBlogPostComment", // The alias of the Document Type
             0); // Umbraco User ID this will be created by, default 0
-            commentNode.SetValue("comment", comment.Comment);
-            commentNode.SetValue("emailAddress", comment.EmailAddress);
-            commentNode.SetValue("name", comment.Name);
+            commentNode.SetValue("commentText", comment.CommentText);
+            commentNode.SetValue("commenterEmail", comment.EmailAddress);
+            commentNode.SetValue("commenterName", comment.Name);
             Services.ContentService.SaveAndPublishWithStatus(commentNode);
 
             return RedirectToCurrentUmbracoPage();

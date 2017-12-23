@@ -397,7 +397,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Partials\Grid\JDListofBlogComments.cshtml" />
-    <Content Include="Views\Partials\JDListOfBlogComments.cshtml" />
+    <Content Include="Views\Partials\JDBlogCommentForm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

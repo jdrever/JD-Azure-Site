@@ -26,12 +26,17 @@
 	@Umbraco.Field("content")
 
 
-    @Html.Action("DisplayListOfComments","BlogSurface")
+    @Html.Action("DisplayCommentForm","BlogSurface")
 
-    @foreach (var comment in Model.Content.Children("blogComment"))
+
+    @if (Model.Content.Children("jDBlogPostComment").Count() > 0)
     {
-        <p>@comment.GetPropertyValue("comment")</p>
+    <h2>Comments</h2>
+        foreach (var comment in Model.Content.Children("jDBlogPostComment"))
+        {
+        <p>@comment.GetPropertyValue("commentText")</p>
+        <p>@comment.GetPropertyValue("commenterName")  @comment.CreateDate</p>
+        }
     }
-
 </div>
 }

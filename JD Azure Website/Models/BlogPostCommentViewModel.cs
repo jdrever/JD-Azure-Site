@@ -17,9 +17,11 @@ namespace JD_Azure_Website.Models
      //   }
 
         [Required]
-        public string Comment { get; set; }
+        public string CommentText { get; set; }
 
         public string Name { get; set; }
+
+        [EmailAddress]
         public string EmailAddress { get; set; }
     }
 }

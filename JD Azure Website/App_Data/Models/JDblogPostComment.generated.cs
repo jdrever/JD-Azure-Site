@@ -46,12 +46,30 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
-		/// Comment
+		/// Commenter Email
 		///</summary>
-		[ImplementPropertyType("comment")]
-		public string Comment
+		[ImplementPropertyType("commenterEmail")]
+		public string CommenterEmail
 		{
-			get { return this.GetPropertyValue<string>("comment"); }
+			get { return this.GetPropertyValue<string>("commenterEmail"); }
+		}
+
+		///<summary>
+		/// Commenter Name
+		///</summary>
+		[ImplementPropertyType("commenterName")]
+		public string CommenterName
+		{
+			get { return this.GetPropertyValue<string>("commenterName"); }
+		}
+
+		///<summary>
+		/// CommentText
+		///</summary>
+		[ImplementPropertyType("commentText")]
+		public string CommentText
+		{
+			get { return this.GetPropertyValue<string>("commentText"); }
 		}
 	}
 }
