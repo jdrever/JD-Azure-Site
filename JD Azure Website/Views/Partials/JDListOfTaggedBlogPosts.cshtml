@@ -1,0 +1,48 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using System.Text.RegularExpressions
+@{
+    string tag = Request.QueryString["tag"];
+
+    if (!tag.IsNullOrWhiteSpace())
+    {
+        <h2>@tag</h2>
+        var taggedContent = Umbraco.TagQuery.GetContentByTag(tag);
+
+        if (taggedContent.Count() > 0)
+        {
+            foreach (var blogPost in taggedContent
+                .OrderByDescending(i => i.CreateDate))
+            {
+                var publishedDate = blogPost.CreateDate;
+
+                if (blogPost.HasProperty("publishedDate") && blogPost.GetPropertyValue("publishedDate") != null)
+                {
+                    var overridePublishedDate = (DateTime)blogPost.GetPropertyValue("publishedDate");
+                    if (overridePublishedDate.Year > 2000)
+                    {
+                        publishedDate = overridePublishedDate;
+                    }
+                }
+                var blogPostContent = blogPost.GetPropertyValue("content").ToString();
+                var blogPostContentWithoutHTMTL = Regex.Replace(blogPostContent, @"<[^>]+>|&nbsp;", "").Trim();
+                int firstParagraphBreakInContent = blogPostContentWithoutHTMTL.IndexOf('\n');
+                string firstLineOfContent = firstParagraphBreakInContent == -1 ? blogPostContentWithoutHTMTL : blogPostContentWithoutHTMTL.Substring(0, firstParagraphBreakInContent + 1);
+                <article>
+                    <p><b>@publishedDate.ToString("D")</b></p>
+                    <h2>@blogPost.Name</h2>
+                    <p>@Html.Raw(firstLineOfContent)</p>
+                    <p><a href="@blogPost.Url">Read more</a></p>
+                </article>
+            }
+        }
+        else
+        {
+            <p>There isn't any content matching that tag.</p>
+            @Html.CachedPartial("JDListOfBlogTags", Model.Content, 86400000)
+        }
+    }
+    else
+    {
+        @Html.CachedPartial("JDListOfBlogTags", Model.Content, 86400000)
+    }
+}

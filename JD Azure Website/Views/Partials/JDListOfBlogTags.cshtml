@@ -1,0 +1,16 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+@{var tagList = Umbraco.TagQuery.GetAllContentTags()
+        .OrderBy(t => t.Text);
+}
+<h3>Tags</h3>
+<ul>
+    @foreach (var tag in tagList)
+    {
+        <li>
+            <a href="/blog/tags/?tag=@tag.Text">
+                @tag.Text (@tag.NodeCount)
+            </a>
+        </li>
+    }
+</ul>
