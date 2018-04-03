@@ -1,0 +1,51 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using System.Text.RegularExpressions
+@{
+
+    var homePage = CurrentPage.AncestorsOrSelf("JDHomePage");
+    if (homePage.Count() > 0)
+    {
+        var blogHomePage = homePage.First().Children("JDBlogMainPage");
+        if (blogHomePage.Count() > 0)
+        {
+            var listOfBlogPosts = blogHomePage.First().Children("JDBlogPost").Where("Visible");
+
+
+            if (listOfBlogPosts.Any())
+            {
+				foreach (var blogPost in listOfBlogPosts)
+                {
+                    var publishedDate = blogPost.CreateDate;
+
+                    if (blogPost.HasProperty("publishedDate") && blogPost.GetValue("publishedDate") != null)
+                    {
+                        var overridePublishedDate = (DateTime)blogPost.GetPropertyValue("publishedDate");
+                        if (overridePublishedDate.Year > 2000)
+                        {
+                            publishedDate = overridePublishedDate;
+                        }
+                    }
+                    var blogPostContent = blogPost.Content.ToString();
+                    var blogPostContentWithoutHTMTL = Regex.Replace(blogPostContent, @"<[^>]+>|&nbsp;", "").Trim();
+                    int firstParagraphBreakInContent = blogPostContentWithoutHTMTL.IndexOf('\n');
+                    string firstLineOfContent = firstParagraphBreakInContent == -1 ? blogPostContentWithoutHTMTL : blogPostContentWithoutHTMTL.Substring(0, firstParagraphBreakInContent + 1);
+<item>
+  <title>@blogPost.Name</title>
+  <description>
+     @firstLineOfContent
+  </description>
+  @Html.Raw(string.Format("<link>{0}</link>", "http://"+Request.ServerVariables["HTTP_HOST"]+@blogPost.Url))
+  <author>james@jamesdrever.co.uk</author>
+  <pubDate>
+     @publishedDate
+ </pubDate>
+</item>
+
+                
+                }
+            }
+        }
+    }
+
+}
+

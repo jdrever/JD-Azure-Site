@@ -434,6 +434,8 @@
     <Compile Include="App_Data\Models\JdblogMainPage.generated.cs" />
     <Compile Include="App_Data\Models\JdblogPost.generated.cs" />
     <Compile Include="App_Data\Models\JDblogPostComment.generated.cs" />
+    <Compile Include="App_Data\Models\JDblogPostTags.generated.cs" />
+    <Compile Include="App_Data\Models\JDblogRssfeed.generated.cs" />
     <Compile Include="App_Data\Models\JDbook.generated.cs" />
     <Compile Include="App_Data\Models\JDbookChapter.generated.cs" />
     <Compile Include="App_Data\Models\JdhomePage.generated.cs" />
